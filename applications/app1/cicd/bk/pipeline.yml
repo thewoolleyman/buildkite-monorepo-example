@@ -1,0 +1,4 @@
+# 'app1' pipeline
+
+steps:
+  - command: echo 'This is the build for app1'

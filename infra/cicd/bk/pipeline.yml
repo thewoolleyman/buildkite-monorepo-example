@@ -1,0 +1,4 @@
+# main monorepo pipeline
+
+steps:
+  - trigger: "app1"
