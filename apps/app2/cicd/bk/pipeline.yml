@@ -2,3 +2,5 @@
 
 steps:
   - command: echo 'This is the build for app2'
+  - command: components/used-by-app2-only/used-by-app2-only
+  - command: components/shared/shared
