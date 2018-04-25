@@ -36,15 +36,21 @@ do
   echo
 done
 
-# write the pipeline.yml to trigger each app
+echo
 pipeline_yml_path=${1:-'/tmp/monorepo-pipeline.yml'}
 rm -f ${pipeline_yml_path}
-echo 'steps:' >> ${pipeline_yml_path}
-for app_to_build in ${apps_to_build}
-do
-  echo "- trigger: ${app_to_build}" >> ${pipeline_yml_path}
-done
 
-echo
-echo "Generated ${pipeline_yml_path}:"; echo
-cat ${pipeline_yml_path}
+if [[ -z "${apps_to_build// }" ]]
+then
+  echo "No apps changed, not generating ${pipeline_yml_path}:"
+else
+  # write the pipeline.yml to trigger each app
+  echo 'steps:' >> ${pipeline_yml_path}
+  for app_to_build in ${apps_to_build}
+  do
+    echo "- trigger: ${app_to_build}" >> ${pipeline_yml_path}
+  done
+
+  echo "Generated ${pipeline_yml_path}:"; echo
+  cat ${pipeline_yml_path}
+fi

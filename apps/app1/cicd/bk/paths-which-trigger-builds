@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # This list could be dynamically based on dependency metadata from gradle, etc.
+echo 'nonapp'
 echo 'applications/app1'
 echo 'components/app1'
 echo 'components/shared'
