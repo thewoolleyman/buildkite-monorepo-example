@@ -4,7 +4,7 @@ Spike on how to conditionally build different apps in a monorepo filtered by sub
 
 ## Overview
 
-* `infra/cicd/bk/pipeline.yml` is the main pipeline which conditionally triggers other pipelines
+* `nonapp/cicd/bk/pipeline.yml` is the main pipeline which conditionally triggers other pipelines
   under `apps/<appname>/cicd/bk/pipeline.yml` based on which of app had its files changed
   as part of a given commit.
 
