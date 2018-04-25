@@ -8,9 +8,17 @@ Spike on how to conditionally build different apps in a monorepo filtered by sub
   under `apps/<appname>/cicd/bk/pipeline.yml` based on which of app had its files changed
   as part of a given commit.
 
-# Testing
+## Testing
 
 * To test scripts locally, `export BUILDKITE_COMMIT=$(git rev-parse --verify HEAD)`
+
+## Buildkite Setup
+
+1. Set up a pipeline for this repo which is triggered by github, using the standard BK github setup instructions.
+   The command to run will be `nonapp/cicd/bk/pipeline.sh`
+1. Set a separate pipeline for each app, **which must be named after the app's dir under `apps`**,
+   but do NOT set it to trigger by github.  The "command to run" will be:
+   `cat apps/APPNAME/cicd/bk/pipeline.yml | buildkite-agent pipeline upload`
 
 ## References
 
