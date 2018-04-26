@@ -10,7 +10,7 @@ monorepo_root="$(realpath "$(dirname "${BASH_SOURCE}")/../../..")"
 # apps to build - these should be subdirectories of apps and names of pipeline slugs
 apps='app1 app2'
 # the default branch should never be force-pushed (rebased or amended), so we can rely on last-passed-build-sha to always exist
-default_branch='master'
+default_branch='master' # This could automatically determined from the GITHUB API
 
 # LOGIC
 
