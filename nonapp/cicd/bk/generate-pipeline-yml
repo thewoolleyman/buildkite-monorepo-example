@@ -4,9 +4,13 @@ set -eu
 # IMPORTANT NOTE 1: You must have the repo set to build every commit for this script to work!
 # IMPORTANT NOTE 2: Each buildkite pipeline slug must be named the same as the apps/<app name> directory
 
+monorepo_root="$(realpath "$(dirname "${BASH_SOURCE}")/../../..")"
+
 apps='app1 app2'
 
-monorepo_root="$(realpath "$(dirname "${BASH_SOURCE}")/../../..")"
+# spiking on getting previous build's commit SHA
+echo 'pipeline builds json:'
+echo $(${monorepo_root}/nonapp/cicd/bk/pipeline-builds)
 
 echo "Generating pipeline.yml for BUILDKITE_COMMIT=${BUILDKITE_COMMIT}:"; echo
 
