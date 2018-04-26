@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eu
+
+query="query PassedBuildsOnMasterQuery { pipeline(slug: \\\"${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}\\\") { builds(branch: \\\"${BUILDKITE_BRANCH}\\\", state: [PASSED], last: 1) { edges { node { commit url } } } } }"
+query_results=$(curl -s https://graphql.buildkite.com/v1 -H "Authorization: Bearer ${BUILDKITE_TOKEN}" -d "{ \"query\": \"${query}\" }")
+echo $query_results | jq -r '.data.pipeline.builds.edges[0].node.commit'
