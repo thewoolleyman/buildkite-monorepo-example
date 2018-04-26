@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
 echo 'executing components/used-by-app2-only'
+
+# comment which can be changed to force build - 1
