@@ -5,5 +5,5 @@ branch='master'
 num_builds=5
 query="query PassedBuildsOnMasterQuery { pipeline(slug: \\\"${pipeline_slug}\\\") { builds(branch: \\\"${branch}\\\", state: [PASSED], last: ${num_builds}) { edges { node { commit url } } } } }"
 curl https://graphql.buildkite.com/v1 \
-  -H "Authorization: Bearer ${TOKEN}" \
+  -H "Authorization: Bearer ${BUILDKITE_TOKEN}" \
   -d "{ \"query\": \"${query}\" }"
