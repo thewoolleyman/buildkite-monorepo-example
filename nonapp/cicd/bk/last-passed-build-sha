@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -eu
 
-echo "Finding last PASSED SHA for pipeline '${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}', branch '${BUILDKITE_BRANCH}'"
+echo "Finding last PASSED build SHA for pipeline '${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}', branch '${BUILDKITE_BRANCH}'"
 query="query PassedBuildsOnMasterQuery { pipeline(slug: \\\"${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}\\\") { builds(branch: \\\"${BUILDKITE_BRANCH}\\\", state: [PASSED], first: 1) { edges { node { commit url } } } } }"
 echo "Graphql query: ${query}"
 query_results=$(curl -s https://graphql.buildkite.com/v1 -H "Authorization: Bearer ${BUILDKITE_TOKEN}" -d "{ \"query\": \"${query}\" }")
 echo "Query results:"
 echo $query_results
 last_passed_sha=$(echo $query_results | jq -r '.data.pipeline.builds.edges[0].node.commit')
-echo "Last PASSED SHA: ${last_passed_sha}"
+echo "Last PASSED build SHA: ${last_passed_sha}"
 rm -f /tmp/last-passed-build-sha
 printf ${last_passed_sha} > /tmp/last-passed-build-sha
