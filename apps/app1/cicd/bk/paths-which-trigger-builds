@@ -4,3 +4,4 @@
 echo 'apps/app1'
 echo 'components/app1'
 echo 'components/shared'
+echo 'nonapp/cicd'

@@ -51,9 +51,9 @@ else
     echo "- trigger: ${app_to_build}" >> ${pipeline_yml_path}
     echo '  async: true' >> ${pipeline_yml_path}
     echo '  build:' >> ${pipeline_yml_path}
-    echo '    message: "${BUILDKITE_MESSAGE}"' >> ${pipeline_yml_path}
-    echo '    commit: "${BUILDKITE_COMMIT}"' >> ${pipeline_yml_path}
-    echo '    branch: "${BUILDKITE_BRANCH}"' >> ${pipeline_yml_path}
+    echo "    message: ${BUILDKITE_MESSAGE}" >> ${pipeline_yml_path}
+    echo "    commit: ${BUILDKITE_COMMIT}" >> ${pipeline_yml_path}
+    echo "    branch: ${BUILDKITE_BRANCH}" >> ${pipeline_yml_path}
   done
 
   echo "Generated ${pipeline_yml_path}:"; echo
