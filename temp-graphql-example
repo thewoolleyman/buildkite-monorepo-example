@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+pipeline_slug='tracker/monorepo-example'
+branch='master'
+query="query PassedBuildsOnMasterQuery { pipeline(slug: \\\"${pipeline_slug}\\\") { builds(branch: \\\"${branch}\\\", state: [PASSED]) { edges { node { commit url } } } } }"
+echo $query
+curl https://graphql.buildkite.com/v1 \
+  -H "Authorization: Bearer ${TOKEN}" \
+  -d "{ \"query\": \"${query}\" }"
