@@ -2,4 +2,4 @@
 
 echo 'executing components/used-by-app2-only'
 
-# comment which can be changed to force build - 3
+# comment which can be changed to force build - 5
