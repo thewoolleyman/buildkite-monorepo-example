@@ -9,5 +9,5 @@ echo "Query results:"
 echo $query_results
 last_passed_sha=$(echo $query_results | jq -r '.data.pipeline.builds.edges[0].node.commit')
 echo "Last PASSED SHA: ${last_passed_sha}"
-rm -f /tmp/last-passed-sha
-printf ${last_passed_sha} > /tmp/last-passed-sha
+rm -f /tmp/last-passed-build-sha
+printf ${last_passed_sha} > /tmp/last-passed-build-sha

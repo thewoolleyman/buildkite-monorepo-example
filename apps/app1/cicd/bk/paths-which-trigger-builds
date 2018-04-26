@@ -2,6 +2,6 @@
 
 # This list could be dynamically based on dependency metadata from gradle, etc.
 echo 'apps/app1'
-echo 'components/app1'
+echo 'components/used-by-app1-only'
 echo 'components/shared'
 echo 'nonapp/cicd'
