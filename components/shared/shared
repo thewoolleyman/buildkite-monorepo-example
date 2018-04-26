@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
 echo 'executing components/shared'
+
+# comment which can be changed to force build - 1
