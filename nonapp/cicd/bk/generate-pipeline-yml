@@ -10,6 +10,7 @@ apps='app1 app2'
 echo "Generating pipeline.yml for BUILDKITE_COMMIT=${BUILDKITE_COMMIT}:"; echo
 
 last_passed_build_sha=$(${monorepo_root}/nonapp/cicd/bk/last-passed-sha)
+echo "Last passed build SHA for monorepo is ${last_passed_build_sha}"
 apps_to_build=''
 # loop over all the apps under `apps/`
 for app in ${apps}
